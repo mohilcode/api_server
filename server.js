@@ -27,7 +27,7 @@ const APP_TOKEN = process.env.APP_TOKEN;
 //   message: 'Too many requests from this IP'
 // });
 
-app.use('/get_api_key/:api_name', limiter);
+app.use('/get_api_key/:api_name');
 
 app.get('/get_api_key/:api_name', (req, res) => {
   const token = req.headers['authorization'];
