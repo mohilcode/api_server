@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-// const rateLimit = require('express-rate-limit');
+const rateLimit = require('express-rate-limit');
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -21,13 +21,13 @@ const API_KEYS = {
 
 const APP_TOKEN = process.env.APP_TOKEN;
 
-// const limiter = rateLimit({
-//   windowMs: 30 * 1000,
-//   max: 5,
-//   message: 'Too many requests from this IP'
-// });
+const limiter = rateLimit({
+  windowMs: 30 * 1000,
+  max: 10,
+  message: 'Too many requests from this IP'
+});
 
-// app.use('/get_api_key/:api_name', limiter);
+app.use('/get_api_key/:api_name', limiter);
 
 app.get('/get_api_key/:api_name', (req, res) => {
   const token = req.headers['authorization'];
