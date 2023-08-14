@@ -17,7 +17,7 @@ const API_KEYS = {
   'RAKUTEN_API_KEY' : process.env.RAKUTEN_API_KEY
 };
 
-const APP_TOKEN = 'XCxUoqSexnjP7WEUzpRGmXhxh';
+const APP_TOKEN = process.env.APP_TOKEN;
 
 const limiter = rateLimit({
   windowMs: 30 * 1000,
