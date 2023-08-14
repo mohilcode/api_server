@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const port = process.env.PORT || 5000;
 
 const app = express();
 
@@ -43,7 +45,6 @@ app.get('/get_api_key/:api_name', (req, res) => {
   }
 });
 
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
